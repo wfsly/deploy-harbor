@@ -37,7 +37,7 @@ openssl x509 -req -sha512 -days 3650 \
     -CA $cert_dir/ca.crt -CAkey $cert_dir/ca.key -CAcreateserial \
     -in $cert_dir/$domain.csr \
     -out $cert_dir/$domain.crt
-cp $cert_dir/$domain.key $cert_dir/server.crt
+cp $cert_dir/$domain.crt $cert_dir/server.crt
 
 # 生成core和registry token验证证书
 openssl genrsa -out $cert_dir/private_key.pem 4096

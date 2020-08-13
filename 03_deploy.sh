@@ -1,6 +1,7 @@
 # harbor/
 #  config
 work_dir="/root/harbor"
+work_dir=${1:-$work_dir}
 
 mkdir -p /data/database
 chown -R 999:999 /data/database
@@ -32,6 +33,7 @@ docker run -d --network harbor --name core   -p 8080:8080 \
 -v $work_dir/config/core/app.conf:/etc/core/app.conf \
 -v $work_dir/config/core/secretKey:/etc/core/key \
 -v $work_dir/config/cert/private_key.pem:/etc/core/private_key.pem \
+-v $work_dir/config/cert/ca.crt:/etc/core/ca/ca.crt \
 goharbor/harbor-core:v1.10.4
 
 # run registry
